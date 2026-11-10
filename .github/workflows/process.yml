@@ -1,0 +1,19 @@
+name: Cut out photos
+on:
+  push:
+    paths: ['tools/picks.json','tools/process.py']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install onnxruntime pillow scipy numpy
+      - run: curl -sSL -o birefnet.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-general-epoch_244.onnx
+      - run: python3 tools/process.py
+      - if: always()
+        run: |
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add work; git commit -m "Cut-out photos" || true; git pull --rebase; git push
