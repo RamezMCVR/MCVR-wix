@@ -5,11 +5,18 @@ P=json.load(open('tools/picks.json')); os.makedirs('work/cut',exist_ok=True)
 OW,OH=1800,1200
 for k,x in P.items():
     if os.path.exists(f'work/cut/{k}.png'): continue
-    u='https://commons.wikimedia.org/wiki/Special:FilePath/'+urllib.parse.quote(x['title'].replace(' ','_'))
-    for i in range(4):
-        try: b=urllib.request.urlopen(urllib.request.Request(u,headers=UA),timeout=120).read(); break
-        except Exception as e: print('retry',k,e); time.sleep(5)
-    open('/tmp/o.jpg','wb').write(b)
+    api='https://commons.wikimedia.org/w/api.php?'+urllib.parse.urlencode({'action':'query','format':'json','titles':'File:'+x['title'],'prop':'imageinfo','iiprop':'url','iiurlwidth':min(x['w'],3600)})
+    b=None
+    for i in range(8):
+        try:
+            j=json.loads(urllib.request.urlopen(urllib.request.Request(api,headers=UA),timeout=60).read())
+            u=list(j['query']['pages'].values())[0]['imageinfo'][0]['thumburl']
+            b=urllib.request.urlopen(urllib.request.Request(u,headers=UA),timeout=120).read()
+            if len(b)>50000: break
+        except Exception as e: print('retry',k,e,flush=True)
+        b=None; time.sleep(15*(i+1))
+    if not b: print('FAILED',k); continue
+    open('/tmp/o.jpg','wb').write(b); time.sleep(4)
     im=Image.open('/tmp/o.jpg'); 
     from PIL import ImageOps; im=ImageOps.exif_transpose(im).convert('RGB')
     im.thumbnail((4000,4000),Image.LANCZOS)
