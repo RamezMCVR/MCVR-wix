@@ -1,24 +1,6 @@
 {
- "ford-transit-luton": [],
- "maxus-luton": [
-  {
-   "title": "Maxus Deliver 9, Nufam 2023, Rheinstetten (P1130782).jpg",
-   "w": 4608,
-   "h": 3456,
-   "idx": 1,
-   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Maxus_Deliver_9%2C_Nufam_2023%2C_Rheinstetten_%28P1130782%29.jpg/500px-Maxus_Deliver_9%2C_Nufam_2023%2C_Rheinstetten_%28P1130782%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "license": "CC BY-SA 4.0",
-   "artist": "<a href=\"//commons.wikimedia.org/wiki/User:MB-one\" title=\"User:MB-one\">Matti Blume</a>"
-  },
-  {
-   "title": "Maxus, IAA 2026, Hanover (20260914-P1086893).jpg",
-   "w": 3110,
-   "h": 2333,
-   "idx": 2,
-   "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Maxus%2C_IAA_2026%2C_Hanover_%2820260914-P1086893%29.jpg/500px-Maxus%2C_IAA_2026%2C_Hanover_%2820260914-P1086893%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "license": "CC BY-SA 4.0",
-   "artist": "<a href=\"//commons.wikimedia.org/wiki/User:MB-one\" title=\"User:MB-one\">Matti Blume</a>"
-  }
- ],
- "ford-transit-luton2": []
+ "ft1": [],
+ "ft2": [],
+ "ft3": [],
+ "ft4": []
 }
