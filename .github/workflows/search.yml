@@ -1,0 +1,15 @@
+name: Search candidate photos
+on:
+  push:
+    paths: ['tools/queries.json']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/search.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add candidates; git commit -m "Candidate photos" || true; git push
